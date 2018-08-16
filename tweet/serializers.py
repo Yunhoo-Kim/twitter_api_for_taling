@@ -1,5 +1,5 @@
 from .models import Tweet, ReTweet
-from user.serializers import UserSerializer
+from user.serializers import UserSerializer, User
 from rest_framework import serializers
 
 
@@ -16,3 +16,11 @@ class ReTweetSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReTweet
         fields = ("id", "re_tweet", "date_add")
+
+
+class UserPageSerializer(serializers.ModelSerializer):
+    tweet = TweetSerializer(many=True)
+
+    class Meta:
+        model = User
+        fields = ("first_name", "last_name", "tweet")

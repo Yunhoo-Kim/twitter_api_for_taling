@@ -18,7 +18,7 @@ from rest_framework.documentation import include_docs_urls
 
 
 urlpatterns = [
-    path('', include("user.urls", namespace="user")),
+    path('user/', include("user.urls", namespace="user")),
     path('tweet/', include("tweet.urls", namespace="tweet")),
     path('docs/', include_docs_urls(title="Twitter API")),
 ]

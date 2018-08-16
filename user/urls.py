@@ -14,14 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import SignupView, LoginView
-from rest_framework_jwt.views import obtain_jwt_token
+from .views import SignupView, LoginView, UserPageView
 
 app_name = "user"
 
 urlpatterns = [
     path('signup/', SignupView.as_view(), name="signup"),
     path('login/', LoginView.as_view(), name="login"),
+    path('<int:pk>/', UserPageView.as_view(), name="user_page"),
 ]
 
 
