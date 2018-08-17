@@ -4,6 +4,7 @@ from rest_framework_jwt.serializers import JSONWebTokenSerializer
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework import permissions
+
 from .serializers import UserSerializer, User
 from tweet.serializers import UserPageSerializer
 
@@ -17,11 +18,19 @@ import json
 class SignupView(JSONWebTokenAPIView):
     """
     post: Signup
+
+    ```response
+    {
+        "code": 0(success), -1(error)
+    }
+```
+
     """
     authentication_classes = (CustomJWTTokenAuthentication, )
     permission_classes = (permissions.AllowAny, )
     renderer_classes = (JSONRenderer, )
     serializer_class = UserSerializer
+    response_doc = {}
 
     def __init__(self):
         self.makejson = MakeJSON()
