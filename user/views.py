@@ -85,4 +85,18 @@ class UserPageView(APIView):
         return self.makejson.getResponse()
 
 
+class UserView(APIView):
+    """
+    get : get User Detail
+    """
+    authentication_classes = (CustomJWTTokenAuthentication, )
+    permission_classes = (permissions.IsAuthenticated, )
+    renderer_classes = (JSONRenderer, )
 
+    def __init__(self):
+        self.makejson = MakeJSON()
+
+    def get(self, request):
+        user = request.user
+        self.makejson.addResult(data=UserPageSerializer(user).data)
+        return self.makejson.getResponse()
