@@ -35,7 +35,7 @@ class SignupView(JSONWebTokenAPIView):
             return self.makejson.get400ResponseWithResponse()
 
         ser.save()
-
+        self.makejson.addResult(code=0)
         return self.makejson.getResponse()
 
 

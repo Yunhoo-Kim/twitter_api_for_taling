@@ -68,7 +68,7 @@ class TweetListView(APIView):
         """
         sdfsdf
         """
-        tweets = Tweet.objects.all()
+        tweets = Tweet.objects.order_by("-id").all()
 
         data = TweetSerializer(tweets, many=True).data
         self.makejson.addResult(tweets=data)

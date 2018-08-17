@@ -11,7 +11,7 @@ class TweetSerializer(serializers.ModelSerializer):
         fields = ("id", "content", "user", "date_add", "user_name")
 
     def get_user_name(self, obj):
-        return "%s %s" % (obj.user.first_name, obj.user.last_name)
+        return "%s %s" % (obj.user.last_name, obj.user.first_name)
 
 
 class ReTweetSerializer(serializers.ModelSerializer):

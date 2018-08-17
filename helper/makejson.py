@@ -31,10 +31,10 @@ class MakeJSON(object):
     def getJson(self):
         self.total['header'] = self.header
         self.total['result'] = self.result
-        if 'code' not in self.total['result']:
-            self.total['result']['code'] = 999
+        if 'code' not in self.result:
+            self.result['code'] = 999
 
-        context = self.total
+        context = self.result
 
         return context
 
@@ -55,10 +55,10 @@ class MakeJSON(object):
         self.header['message'] = "Ruined Request"
         self.total['header'] = self.header
         self.total['result'] = self.result
-        if 'code' not in self.total['result']:
-            self.total['result']['code'] = -1
+        if 'code' not in self.result:
+            self.result['code'] = -1
 
-        return self.total
+        return self.result
 
     def get404Response(self):
         self.header['version'] = VERSION
